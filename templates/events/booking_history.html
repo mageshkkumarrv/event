@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Booking History{% endblock %}
+{% block content %}
+<h2 class="text-center">Your Booking History</h2>
+{% if bookings %}
+    <ul class="list-group">
+        {% for booking in bookings %}
+            <li class="list-group-item">
+                <strong>Event:</strong> {{ booking.event.name }}<br>
+                <strong>Date:</strong> {{ booking.event.date }}<br>
+                <strong>Location:</strong> {{ booking.event.location }}<br>
+                <strong>Booked On:</strong> {{ booking.booking_date }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p class="text-center">You have no bookings yet.</p>
+{% endif %}
+{% endblock %}

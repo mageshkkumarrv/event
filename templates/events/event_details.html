@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Event Details{% endblock %}
+{% block content %}
+<h1>{{ event.name }}</h1>
+<p>{{ event.description }}</p>
+<p>Date: {{ event.date }} Time: {{ event.time }}</p>
+<p>Location: {{ event.location }}</p>
+<p>Price: ₹{{ event.price }}</p>
+<a href="{% url 'book_event' event.id %}" class="btn btn-success">Book Now</a>
+{% endblock %}

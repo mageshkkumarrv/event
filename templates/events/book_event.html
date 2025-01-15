@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Book Event{% endblock %}
+{% block content %}
+<h1>Book Event: {{ event.name }}</h1>
+<p>Booking will expire in: <span id="timer">05:00</span></p>
+<p>Event: {{ event.name }}</p>
+<p>Date: {{ event.date }}</p>
+<p>Location: {{ event.location }}</p>
+<p>Price: ₹{{ event.price }}</p>
+<form method="POST">
+    {% csrf_token %}
+    <label for="user_phone">Phone Number:</label>
+    <input type="text" id="user_phone" name="user_phone" required>
+    <button type="submit" class="btn btn-success">Confirm Booking</button>
+</form>
+
+<script>
+    // Countdown Timer
+    let countdownMinutes = 5; // Timer set for 5 minutes
+    let countdownSeconds = 0;
+
+    function updateCountdown() {
+        if (countdownMinutes === 0 && countdownSeconds === 0) {
+            // Time expired - Redirect to home
+            alert("Booking time expired. Redirecting to home...");
+            window.location.href = "/";
+            return;
+        }
+
+        if (countdownSeconds === 0) {
+            countdownMinutes--;
+            countdownSeconds = 59;
+        } else {
+            countdownSeconds--;
+        }
+
+        // Update countdown display
+        document.getElementById("timer").textContent = 
+            countdownMinutes.toString().padStart(2, '0') + ":" + 
+            countdownSeconds.toString().padStart(2, '0');
+    }
+
+    // Start the countdown
+    setInterval(updateCountdown, 1000);
+</script>
+{% endblock %}
