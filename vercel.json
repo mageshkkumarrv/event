@@ -1,0 +1,16 @@
+  {
+    "version": 2,
+    "builds": [
+      {
+        "src": "ticket_booking/asgi.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "ticket_booking/asgi.py"
+      }
+    ]
+  }
+  
