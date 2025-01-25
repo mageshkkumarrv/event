@@ -7,10 +7,18 @@ For more information on this file, see
 https://docs.djangoproject.com/en/5.1/howto/deployment/asgi/
 """
 
-import os
+# import os
 
+# from django.core.asgi import get_asgi_application
+
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ticket_booking.settings')
+
+# application = get_asgi_application()
+
+import os
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ticket_booking.settings')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ticket_booking.settings")
 
-application = get_asgi_application()
+# Define 'app' for Vercel
+app = get_asgi_application()
